@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts - Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px; /* Added margin-bottom */
+        }
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .header p {
+            font-size: 18px;
+        }
+
+
+
+.form-group {
+    margin-bottom: 20px;
+    position:relative;
+}
+
+
+
+
+
+
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto; /* Removed top margin */
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .custom-file-label {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .custom-file-label:hover {
+            background-color: #0056b3;
+        }
+        .custom-file-label::after {
+            content: "Choose Class Image";
+        }
+        .custom-file-input:focus~.custom-file-label {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .btn-upload {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-upload:hover {
+            background-color: #218838;
+        }
+        .wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: 100% 80px;
+            background-repeat: repeat-x;
+            z-index: -1;
+            animation: wave-animation 10s infinite linear;
+        }
+        @keyframes wave-animation {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1000px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-camera"></i> Face Recognition Based Attendance System</h1>
+        <p>Upload an image to take attendance</p>
+    </div>
+    <div class="container">
+        <form action="/upload_image" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+<label for="image" class="custom-file-label" >Choose Class Image</label>
+                <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
+
+            </div>
+
+
+
+            <button type="submit" class="btn btn-upload btn-block">Upload</button>
+        </form>
+    </div>
+    <!-- Animated wave background -->
+    <div class="wave" style="background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gIDxwYXRoIGQ9Ik0wIDBoMzB2MzBIMHoiLz4gIDxwYXRoIGQ9Ik0wIDBoMzB2MzBIMFYweiIvPiAgPHBhdGggZD0iTTE5IDBoMzB2MzBIMFYweiIvPiAgPHBhdGggZD0iTTMxIDE4bC0xOCAxOC0xOCAxOC0xOC0xOC0xOC0xOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOCAxOC0xOC0xOHoiLz4gPC9nPjwvc3ZnPg==');"></div>
+    <!-- Bootstrap JS (optional, if you need Bootstrap JS functionality) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        // Update file input label with selected file name
+        $('.custom-file-input').on('change', function() {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+</html>
